@@ -11,6 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 
+/**
+ * kafka spring-boot版本
+ * 
+ * @author Weihai Li
+ *
+ */
 @SpringBootApplication
 public class Chapter3 implements CommandLineRunner {
 

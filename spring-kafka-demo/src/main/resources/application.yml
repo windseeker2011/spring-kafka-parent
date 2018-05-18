@@ -1,5 +1,5 @@
 spring:
   kafka:
     consumer:
-      group-id: foo
+      group-id: topic3
       auto-offset-reset: earliest
