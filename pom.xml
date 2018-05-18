@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>spring-kafka-demo</module>
+		<module>spring-kafka-springboot</module>
 	</modules>
 
 	<properties>
@@ -29,6 +30,19 @@
 				<groupId>org.springframework.kafka</groupId>
 				<artifactId>spring-kafka</artifactId>
 				<version>2.1.6.RELEASE</version>
+			</dependency>
+			<!-- lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.16.20</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.8.4</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
