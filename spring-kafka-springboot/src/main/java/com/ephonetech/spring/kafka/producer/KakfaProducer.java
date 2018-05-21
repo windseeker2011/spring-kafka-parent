@@ -1,7 +1,9 @@
-package com.ephonetech.spring.kafka.controller;
+package com.ephonetech.spring.kafka.producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,7 @@ public class KakfaProducer {
 	@Autowired
 	private KafkaTemplate<String, String> template;
 
-	private static String TOPIC = "kafka";
+	private static String TOPIC = "logs";
 
 	@PostMapping(value = "string")
 	public String sendMessage(@RequestParam String message) {
@@ -42,7 +44,21 @@ public class KakfaProducer {
 	public String sendMessage(@RequestBody Message message) {
 		GsonBuilder gb = new GsonBuilder();
 		gb.setDateFormat("yyyy-MM-dd HH:mm:ss");
-		template.send(TOPIC, "3", gb.create().toJson(message));
+		template.send(TOPIC, "3", gb.create().toJson(message))
+				.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+					@Override
+					public void onSuccess(SendResult<String, String> result) {
+						System.out.println("成功 " + result);
+
+					}
+
+					@Override
+					public void onFailure(Throwable ex) {
+						System.out.println("失败 " + ex.getMessage());
+
+					}
+
+				});
 		return "success";
 	}
 

@@ -103,6 +103,7 @@ public class Chapter_1 {
 		props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 33554432);
 		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class);
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, MyPartition.class);// 自定义分区规则
 		return props;
 	}
 

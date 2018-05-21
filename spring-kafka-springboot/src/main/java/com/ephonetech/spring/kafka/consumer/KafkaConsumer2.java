@@ -1,21 +1,21 @@
-package com.ephonetech.spring.kafka.controller;
+package com.ephonetech.spring.kafka.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 /**
- * 消费者（方法级注解）
+ * 消费者2
  * 
  * @author Weihai Li
  *
  */
 @Component
-public class KafkaConsumerInMethod {
+public class KafkaConsumer2 {
 
-	@KafkaListener(id = "tt", topics = "kafka")
+	@KafkaListener(id = "c2", groupId = "group1", topics = "logs")
 	public void listen(ConsumerRecord<String, String> cr) {
-		System.out.println("KafkaListener in method>>> " + cr.value());
+		System.out.println("KafkaListener 2>>> " + cr);
 	}
 
 }

@@ -1,7 +1,9 @@
 spring:
   kafka:
     bootstrap-servers:
-    - localhost:9092,localhost:9093
+    - localhost:9092,localhost:9093,localhost:9094
+    listener:
+      concurrency: 3
     producer:
       retries: 0
       batch-size: 16384
@@ -10,7 +12,7 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
       group-id: group
-      auto-offset-reset: earliest
+      auto-offset-reset: latest
       enable-auto-commit: true
       auto-commit-interval: 100
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
