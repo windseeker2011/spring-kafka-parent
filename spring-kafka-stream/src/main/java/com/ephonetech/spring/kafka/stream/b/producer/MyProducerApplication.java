@@ -1,4 +1,4 @@
-package com.ephonetech.spring.kafka.stream.a.producer;
+package com.ephonetech.spring.kafka.stream.b.producer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 简易版生产者
+ * 自定义版生产者
  * 
  * @author Weihai Li
  *
  */
 @SpringBootApplication
 @RestController
-public class SimpleProducerApplication {
+public class MyProducerApplication {
 
 	@Autowired
-	private SimpleProducer producer;
+	private MyProducer producer;
 
 	@GetMapping(value = "/{msg}")
 	public String sendMessage(@PathVariable String msg) {
@@ -27,8 +27,8 @@ public class SimpleProducerApplication {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String[] args2 = new String[] { "--server.port=8880", "--spring.profiles.active=sout" };
-		SpringApplication.run(SimpleProducerApplication.class, args2);
+		String[] args2 = new String[] { "--server.port=8890", "--spring.profiles.active=myout" };
+		SpringApplication.run(MyProducerApplication.class, args2);
 	}
 
 }
