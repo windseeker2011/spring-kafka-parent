@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    stream:
+      instance-count: 3
+      instance-index: 0
+      kafka:
+        binder:
+          brokers: localhost:9092,localhost:9093,localhost:9094
+          auto-add-partitions: true
+          auto-create-topics: true
+          min-partition-count: 1
+      bindings:
+        mychannel:
+          destination: stream-device
+          group: group1
+          consumer:
+            concurrency: 3
+            partitioned: false
