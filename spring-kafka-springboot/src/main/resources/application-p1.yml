@@ -1,0 +1,15 @@
+server:
+  port: 8091
+topic: device
+spring:
+  kafka:
+    bootstrap-servers:
+    - localhost:9092,localhost:9093,localhost:9094
+    listener:
+      concurrency: 3
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
